@@ -54,21 +54,21 @@ public class Element extends ParentNode {
     private String localName;
     private String prefix;
     private String URI;
-    private Map<String, String> userData;
+    private Map<String, Object> userData;
 
     private Attribute[] attributes = null;
     private int         numAttributes = 0;
             Namespaces  namespaces = null;
 
-    public void setUserData(String key, String value) {
+    public void setUserData(String key, Object value) {
         if(userData == null) {
-            userData = new HashMap<String, String>();
+            userData = new HashMap<String, Object>();
         }
 
         userData.put(key, value);
     }
 
-    public String getUserData(String key) {
+    public Object getUserData(String key) {
         if(userData != null) {
             return userData.get(key);
         }
