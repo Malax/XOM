@@ -125,7 +125,7 @@ class XOMHandler
         flushText();
         Element element;
         if (parent != document) {
-            element = factory.startMakingElement(qualifiedName, namespaceURI);
+            element = factory.startMakingElement(qualifiedName, namespaceURI, locator);
         }
         else {  // root
             element = factory.makeRootElement(qualifiedName, namespaceURI);

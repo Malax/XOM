@@ -21,6 +21,8 @@
 
 package nu.xom;
 
+import org.xml.sax.*;
+
 /**
  * <p>
  * Builders use a <code>NodeFactory</code> object
@@ -124,10 +126,17 @@ public class NodeFactory {
      * @return the new element
      */
     public Element startMakingElement(String name, String namespace) {
-        return new Element(name, namespace);    
+        return startMakingElement(name, namespace, null);
     }
-   
-    
+
+    /**
+     * This is the same method as {@link #startMakingElement(String, String)} except that a locator
+     * can be passed to it. Some implementations might choose to do so, but dont take it for granted.
+     */
+    public Element startMakingElement(String name, String namespace, Locator locator) {
+        return new Element(name, namespace);
+    }
+
     /**
      * <p>
      * Signals the end of an element. This method should return 
