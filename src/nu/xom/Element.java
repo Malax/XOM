@@ -54,10 +54,27 @@ public class Element extends ParentNode {
     private String localName;
     private String prefix;
     private String URI;
+    private Map<String, String> userData;
 
     private Attribute[] attributes = null;
     private int         numAttributes = 0;
             Namespaces  namespaces = null;
+
+    public void setUserData(String key, String value) {
+        if(userData == null) {
+            userData = new HashMap<String, String>();
+        }
+
+        userData.put(key, value);
+    }
+
+    public String getUserData(String key) {
+        if(userData != null) {
+            return userData.get(key);
+        }
+        
+        return null;
+    }
 
     /**
      * <p>
@@ -208,8 +225,6 @@ public class Element extends ParentNode {
         return result;
         
     }
-
-
     private static void copyChildren(final Element sourceElement, 
       Element resultElement) {
         
@@ -249,7 +264,7 @@ public class Element extends ParentNode {
                 else {
                     index++;
                     indexes[top] = index;
-                    sourceCurrent = sourceParent.getChild(index); 
+                    sourceCurrent = sourceParent.getChild(index);
                 }
             }
             
